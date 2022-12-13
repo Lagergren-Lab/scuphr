@@ -1,0 +1,21 @@
+
+../../../../booster-0.1.2/src/booster -i j_consensus.tre -b sampled_trees/j_boot.tre -a tbe -o tbe_output_consensus.tre -r tbe_output_raw_consensus.tre -S tbe_stats_consensus.txt -c
+../../../../booster-0.1.2/src/booster -i j_consensus.tre -b sampled_trees/j_boot.tre -a fbp -o fbp_output_consensus.tre -r fbp_output_raw_consensus.tre -S fbp_stats_consensus.txt -c
+
+../../../../booster-0.1.2/src/booster -i j_inferred.tre -b sampled_trees/j_boot.tre -a tbe -o tbe_output_inferred.tre -r tbe_output_raw_inferred.tre -S tbe_stats_inferred.txt -c
+../../../../booster-0.1.2/src/booster -i j_inferred.tre -b sampled_trees/j_boot.tre -a fbp -o fbp_output_inferred.tre -r fbp_output_raw_inferred.tre -S fbp_stats_inferred.txt -c
+
+../../../../booster-0.1.2/src/booster -i j_selected.tre -b sampled_trees/j_boot.tre -a tbe -o tbe_output_selected.tre -r tbe_output_raw_selected.tre -S tbe_stats_selected.txt -c
+../../../../booster-0.1.2/src/booster -i j_selected.tre -b sampled_trees/j_boot.tre -a fbp -o fbp_output_selected.tre -r fbp_output_raw_selected.tre -S fbp_stats_selected.txt -c
+
+
+sumtrees.py j_boot.tre --target=sampled_trees/result_minclade_100_10.tre --output=sum_inferred.tre --force-rooted 
+
+
+sumtrees.py sampled_trees/j_boot.tre --target=sampled_trees/result_minclade_100_10.tre --output=sum_inferred.tre --force-rooted 
+
+
+
+../booster-0.1.2/src/booster -i j_selected.tre -b j_consensus.tre -a tbe -o tbe_output_consensus_on_selected.tre -r tbe_output_raw_consensus_on_selected.tre -S tbe_stats_consensus_on_selected.txt -c
+../booster-0.1.2/src/booster -i j_selected.tre -b j_consensus.tre -a fbp -o fbp_output_consensus_on_selected.tre -r fbp_output_raw_consensus_on_selected.tre -S fbp_stats_consensus_on_selected.txt -c
+

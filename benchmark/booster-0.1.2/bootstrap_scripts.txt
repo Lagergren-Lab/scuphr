@@ -1,0 +1,86 @@
+cd sampled_trees
+mkdir wo_bulk
+mv *wo*.tre wo_bulk
+
+cat t_*.tre > ../j_boot_w_bulk_temp.tre
+cat wo_bulk/t_*.tre > ../j_boot_wo_bulk_temp.tre
+
+cut -c 5- ../j_boot_w_bulk_temp.tre > ../j_boot_w_bulk.tre
+cut -c 5- ../j_boot_wo_bulk_temp.tre > ../j_boot_wo_bulk.tre
+
+rm ../j_boot_w_bulk_temp.tre 
+rm ../j_boot_wo_bulk_temp.tre 
+
+cut -c 5- ../../inferred_w_bulk_root.tre > ../j_inferred_w_bulk.tre
+cut -c 5- ../../inferred_wo_bulk.tre > ../j_inferred_wo_bulk.tre
+
+cd ..
+
+../../../../benchmark/booster-0.1.2/src/booster -i j_inferred_w_bulk.tre -b j_boot_w_bulk.tre -a tbe -o tbe_output_inferred_w_bulk.tre -r tbe_output_raw_inferred_w_bulk.tre -S tbe_stats_inferred_w_bulk.txt -c
+
+../../../../benchmark/booster-0.1.2/src/booster -i j_inferred_w_bulk.tre -b j_boot_w_bulk.tre -a fbp -o fbp_output_inferred_w_bulk.tre -r fbp_output_raw_inferred_w_bulk.tre -S fbp_stats_inferred_w_bulk.txt -c
+
+
+../../../../benchmark/booster-0.1.2/src/booster -i j_inferred_wo_bulk.tre -b j_boot_wo_bulk.tre -a tbe -o tbe_output_inferred_wo_bulk.tre -r tbe_output_raw_inferred_wo_bulk.tre -S tbe_stats_inferred_wo_bulk.txt -c
+
+../../../../benchmark/booster-0.1.2/src/booster -i j_inferred_wo_bulk.tre -b j_boot_wo_bulk.tre -a fbp -o fbp_output_inferred_wo_bulk.tre -r fbp_output_raw_inferred_wo_bulk.tre -S fbp_stats_inferred_wo_bulk.txt -c
+
+
+
+../../../../benchmark/booster-0.1.2/src/booster -i ../../../j_joanna_tree.tre -b j_boot_w_bulk.tre -a tbe -o tbe_output_real_w_bulk.tre -r tbe_output_raw_real_w_bulk.tre -S tbe_stats_real_w_bulk.txt -c
+
+../../../../benchmark/booster-0.1.2/src/booster -i ../../../j_joanna_tree.tre -b j_boot_w_bulk.tre -a fbp -o fbp_output_real_w_bulk.tre -r fbp_output_raw_real_w_bulk.tre -S fbp_stats_real_w_bulk.txt -c
+
+
+../../../../benchmark/booster-0.1.2/src/booster -i ../../../j_joanna_tree.tre -b j_boot_wo_bulk.tre -a tbe -o tbe_output_real_wo_bulk.tre -r tbe_output_raw_real_wo_bulk.tre -S tbe_stats_real_wo_bulk.txt -c
+
+../../../../benchmark/booster-0.1.2/src/booster -i ../../../j_joanna_tree.tre -b j_boot_wo_bulk.tre -a fbp -o fbp_output_real_wo_bulk.tre -r fbp_output_raw_real_wo_bulk.tre -S fbp_stats_real_wo_bulk.txt -c
+
+
+
+
+
+../../../../benchmark/booster-0.1.2/src/booster -i j_consensus_w_bulk.tre -b j_boot_w_bulk.tre -a tbe -o tbe_output_consensus_w_bulk.tre -r tbe_output_raw_consensus_w_bulk.tre -S tbe_stats_consensus_w_bulk.txt -c
+
+../../../../benchmark/booster-0.1.2/src/booster -i j_consensus_w_bulk.tre -b j_boot_w_bulk.tre -a fbp -o fbp_output_consensus_w_bulk.tre -r fbp_output_raw_consensus_w_bulk.tre -S fbp_stats_consensus_w_bulk.txt -c
+
+
+../../../../benchmark/booster-0.1.2/src/booster -i j_consensus_wo_bulk.tre -b j_boot_wo_bulk.tre -a tbe -o tbe_output_consensus_wo_bulk.tre -r tbe_output_raw_consensus_wo_bulk.tre -S tbe_stats_consensus_wo_bulk.txt -c
+
+../../../../benchmark/booster-0.1.2/src/booster -i j_consensus_wo_bulk.tre -b j_boot_wo_bulk.tre -a fbp -o fbp_output_consensus_wo_bulk.tre -r fbp_output_raw_consensus_wo_bulk.tre -S fbp_stats_consensus_wo_bulk.txt -c
+
+
+
+
+
+
+##########
+
+
+../../../benchmark/booster-0.1.2/src/booster -i ../../j_joanna_tree.tre -b j_boot_w_bulk.tre -a tbe -o tbe_output_real_w_bulk.tre -r tbe_output_raw_real_w_bulk.tre -S tbe_stats_real_w_bulk.txt -c
+
+../../../benchmark/booster-0.1.2/src/booster -i ../../j_joanna_tree.tre -b j_boot_w_bulk.tre -a fbp -o fbp_output_real_w_bulk.tre -r fbp_output_raw_real_w_bulk.tre -S fbp_stats_real_w_bulk.txt -c
+
+
+../../../benchmark/booster-0.1.2/src/booster -i ../../j_joanna_tree.tre -b j_boot_wo_bulk.tre -a tbe -o tbe_output_real_wo_bulk.tre -r tbe_output_raw_real_wo_bulk.tre -S tbe_stats_real_wo_bulk.txt -c
+
+../../../benchmark/booster-0.1.2/src/booster -i ../../j_joanna_tree.tre -b j_boot_wo_bulk.tre -a fbp -o fbp_output_real_wo_bulk.tre -r fbp_output_raw_real_wo_bulk.tre -S fbp_stats_real_wo_bulk.txt -c
+
+
+### SCIPHI
+
+../../../benchmark/booster-0.1.2/src/booster -i ../../j_joanna_tree.tre -b j_boot_sciphi_all_once.tre -a tbe -o tbe_output_real_sciphi_all_once.tre -r tbe_output_raw_real_sciphi_all_once.tre -S tbe_stats_real_sciphi_all_once.txt -c
+
+../../../benchmark/booster-0.1.2/src/booster -i ../../j_joanna_tree.tre -b j_boot_sciphi_all_once.tre -a fbp -o fbp_output_real_sciphi_all_once.tre -r fbp_output_raw_real_sciphi_all_once.tre -S fbp_stats_real_sciphi_all_once.txt -c
+
+#
+
+cd sampled_trees
+cat t_*.tre > ../j_boot_sciphi_weighted.tre
+
+cd ..
+
+../../../benchmark/booster-0.1.2/src/booster -i ../../j_joanna_tree.tre -b j_boot_sciphi_weighted.tre -a tbe -o tbe_output_real_sciphi_weighted.tre -r tbe_output_raw_real_sciphi_weighted.tre -S tbe_stats_real_sciphi_weighted.txt -c
+
+../../../benchmark/booster-0.1.2/src/booster -i ../../j_joanna_tree.tre -b j_boot_sciphi_weighted.tre -a fbp -o fbp_output_real_sciphi_weighted.tre -r fbp_output_raw_real_sciphi_weighted.tre -S fbp_stats_real_sciphi_weighted.txt -c
+
